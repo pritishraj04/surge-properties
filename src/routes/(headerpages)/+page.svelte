@@ -26,10 +26,14 @@
   };
 </script>
 
+<svelte:head>
+  <title>Home | Surge Properties</title>
+</svelte:head>
+
 <main>
   <section class="margin-be-section">
     <div class="container">
-      <div class="hero-section ">
+      <div class="hero-section">
         <div class="heading text-center">
           <h1 class="section-title fs-primary-heading fw-bold">
             Find Your Property that Suits You
@@ -240,7 +244,7 @@
     padding: 8.5rem 2rem;
     border-radius: var(--br-primary);
     background-image: linear-gradient(45deg, rgb(160, 160, 160), transparent);
-    background-image: url("../lib/assets/imgs/breno-assis-r3WAWU5Fi5Q-unsplash.webp");
+    background-image: url("$lib/assets/imgs/breno-assis-r3WAWU5Fi5Q-unsplash.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -310,7 +314,6 @@
     display: flex;
   }
   .filter-options select {
-    padding-inline: 6px;
     border: 0;
     padding-inline: 0.75em;
     font-weight: var(--fw-semi-bold);

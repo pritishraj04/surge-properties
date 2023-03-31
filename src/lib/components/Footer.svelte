@@ -13,9 +13,9 @@
           <h3 class="fs-secondary-heading fw-semi-bold">Links</h3>
           <!-- svelte-ignore a11y-no-redundant-roles -->
           <ul role="list">
-            <li><a href="/">Buy</a></li>
-            <li><a href="/">Rent</a></li>
-            <li><a href="/">Sell or rent your Property</a></li>
+            <li><a href="/sale">Buy</a></li>
+            <li><a href="/rental">Rent</a></li>
+            <li><a href="/add-property">Sell or rent your Property</a></li>
           </ul>
         </div>
 
@@ -23,9 +23,9 @@
           <h3 class="fs-secondary-heading fw-semi-bold">Accounts</h3>
           <!-- svelte-ignore a11y-no-redundant-roles -->
           <ul role="list">
-            <li><a href="/">Login</a></li>
-            <li><a href="/">Signup</a></li>
-            <li><a href="/">Sell or rent your Property</a></li>
+            <li><a href="/signin">Sign In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/add-property">Sell or rent your Property</a></li>
           </ul>
         </div>
 

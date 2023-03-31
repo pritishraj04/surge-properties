@@ -23,10 +23,22 @@
       <nav class={isMenuOpen ? "nav-shown" : ""}>
         <!-- svelte-ignore a11y-no-redundant-roles -->
         <ul class="nav-list" role="list">
-          <li><a href="/">Buy</a></li>
-          <li><a href="/">Rent</a></li>
-          <li><a href="/">Shortlist</a></li>
-          <li><a class="cta-button" href="/">Sell or rent your Property</a></li>
+          <li><a href="/sale">Buy</a></li>
+          <li><a href="/rental">Rent</a></li>
+          <li><a href="/signin">Sign In</a></li>
+          <li>
+            <a class="cta-button" href="/add-property"
+              >Sell or rent your Property</a
+            >
+          </li>
+          <li>
+            <a href="/"
+              ><iconify-icon
+                icon="material-symbols:list-alt-outline"
+                style="font-size: 30px;"
+              /></a
+            >
+          </li>
         </ul>
       </nav>
     </section>

@@ -411,3 +411,75 @@ body {
   font-size: var(--fs-200);
   margin-block: 0.4rem;
 }
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  background-color: var(--clr-neutral-100);
+  padding-inline: 0.475rem;
+  padding-bottom: 0.8rem;
+}
+.form-field label,
+fieldset legend {
+  font-size: var(--fs-500);
+  color: var(--clr-neutral-800);
+  font-weight: var(--fw-bold);
+  margin-left: 0.3rem;
+  line-height: 1.8;
+}
+.form-field input,
+.form-field textarea {
+  border: none;
+  background: var(--clr-neutral-100);
+  color: var(--clr-neutral-800);
+  padding: 0.475rem;
+  border-radius: var(--br-primary);
+}
+.form-field select {
+  border: none;
+  background: var(--clr-neutral-100);
+  color: var(--clr-neutral-900);
+  box-shadow: 0 0.5px 2px var(--clr-neutral-500);
+  padding: 0.75rem;
+  border-radius: var(--br-primary);
+}
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 2px solid var(--clr-primary-400);
+}
+.form-field input[type="file"]::file-selector-button {
+  border: 0;
+  border-radius: var(--br-button);
+  padding: 0.5em;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-botton);
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-primary-400);
+  cursor: pointer;
+}
+.form-field input:disabled,
+.form-field textarea:disabled {
+  background: var(--clr-neutral-600);
+  cursor: not-allowed;
+}
+.horizontal-multiple-choice {
+  display: flex;
+  gap: 1rem;
+}
+.form-error {
+  background-color: var(--clr-danger);
+  color: var(--clr-neutral-200);
+  padding: 0.5rem;
+  border-radius: var(--br-primary);
+}
+.form-error::before {
+  content: "Error: ";
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-bold);
+}
+.form-subtext {
+  color: var(--clr-neutral-500);
+  font-weight: var(--fw-semi-bold);
+}

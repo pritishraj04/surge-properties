@@ -13,7 +13,9 @@
       <p>818-1,371 SQ.FT (Saleable)</p>
     </div>
     <div class="action">
-      <button>Shortlist</button>
+      <button
+        ><iconify-icon icon="material-symbols:list-alt-add" /> Shortlist</button
+      >
       <a href="/">Details</a>
     </div>
   </div>

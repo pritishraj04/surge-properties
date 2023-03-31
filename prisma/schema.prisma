@@ -1,0 +1,125 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  phone      BigInt     @unique
+  email      String     @unique
+  hash       String
+  properties Property[]
+
+  authToken String @unique
+
+  Role   Roles @relation(fields: [roleId], references: [id])
+  roleId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Roles {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  User User[]
+}
+
+model PropertyType {
+  id Int @id @default(autoincrement())
+
+  name           String     @unique
+  propertyLinked Property[]
+}
+
+model RentorSale {
+  id Int @id @default(autoincrement())
+
+  name           String     @unique
+  propertyLinked Property[]
+}
+
+model FurnishingType {
+  id Int @id @default(autoincrement())
+
+  name           String     @unique
+  propertyLinked Property[]
+}
+
+model PossesionStatus {
+  id Int @id @default(autoincrement())
+
+  name           String     @unique
+  propertyLinked Property[]
+}
+
+model Developer {
+  id Int @id @default(autoincrement())
+
+  name           String     @unique
+  propertyLinked Property[]
+}
+
+model Amenities {
+  id Int @id @default(autoincrement())
+
+  name           String     @unique
+  icon           String?
+  type           String?
+  propertyLinked Property[]
+}
+
+model Furnitures {
+  id Int @id @default(autoincrement())
+
+  name           String     @unique
+  icon           String?
+  propertyLinked Property[]
+}
+
+model Property {
+  id Int @id @default(autoincrement())
+
+  name            String
+  societyName     String?
+  locality        String
+  City            String
+  desc            String
+  price           BigInt
+  maintainance    BigInt?
+  brokerage       BigInt?
+  areaSize        String
+  bedrooms        Int     @default(0)
+  bathrooms       Int     @default(0)
+  additionalRooms String
+  ageInMonths     Int
+  floor           String
+
+  status             PossesionStatus @relation(fields: [statusName], references: [name])
+  statusName         String
+  propertyOfferedAs  PropertyType    @relation(fields: [propertyTypeName], references: [name])
+  propertyTypeName   String
+  furnishingType     FurnishingType  @relation(fields: [furnishingTypeName], references: [name])
+  furnishingTypeName String
+  rentOrSale         RentorSale      @relation(fields: [rentOrSaleName], references: [name])
+  rentOrSaleName     String
+  developer          Developer?      @relation(fields: [developerName], references: [name])
+  developerName      String
+
+  furnitures Furnitures[]
+  amenities  Amenities[]
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
