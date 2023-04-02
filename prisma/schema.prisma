@@ -61,12 +61,12 @@ model PossesionStatus {
   propertyLinked Property[]
 }
 
-model Developer {
-  id Int @id @default(autoincrement())
+// model Developer {
+//   id Int @id @default(autoincrement())
 
-  name           String     @unique
-  propertyLinked Property[]
-}
+//   name           String     @unique
+//   propertyLinked Property[]
+// }
 
 model Amenities {
   id Int @id @default(autoincrement())
@@ -111,8 +111,8 @@ model Property {
   furnishingTypeName String
   rentOrSale         RentorSale      @relation(fields: [rentOrSaleName], references: [name])
   rentOrSaleName     String
-  developer          Developer?      @relation(fields: [developerName], references: [name])
-  developerName      String
+  // developer          Developer?      @relation(fields: [developerName], references: [name])
+  // developerName      String?
 
   furnitures Furnitures[]
   amenities  Amenities[]

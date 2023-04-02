@@ -483,3 +483,13 @@ fieldset legend {
   color: var(--clr-neutral-500);
   font-weight: var(--fw-semi-bold);
 }
+.disabled {
+  pointer-events: none;
+}
+.disabled input {
+  background-color: var(--clr-neutral-300);
+}
+.form-field-hidden {
+  display: none;
+  visibility: hidden;
+}

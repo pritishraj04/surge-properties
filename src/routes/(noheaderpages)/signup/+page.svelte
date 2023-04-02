@@ -128,12 +128,6 @@
     display: flex;
     gap: 80px;
   }
-  @media (max-width: 50rem) {
-    .signup {
-      flex-direction: column-reverse;
-      gap: 40px;
-    }
-  }
   .details {
     flex-grow: 3;
     max-width: 680px;
@@ -155,5 +149,14 @@
   }
   .form-heading {
     margin-bottom: 20px;
+  }
+  @media (max-width: 50rem) {
+    .signup {
+      flex-direction: column-reverse;
+      gap: 40px;
+    }
+    .form {
+      min-width: auto;
+    }
   }
 </style>
