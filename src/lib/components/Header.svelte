@@ -1,5 +1,6 @@
 <script>
   import Logo from "$lib/components/Logo.svelte";
+  import { page } from "$app/stores";
 
   let isMenuOpen = false;
 </script>
@@ -25,7 +26,11 @@
         <ul class="nav-list" role="list">
           <li><a href="/sale">Buy</a></li>
           <li><a href="/rental">Rent</a></li>
-          <li><a href="/signin">Sign In</a></li>
+          {#if !$page.data.user}
+            <li><a href="/signin">Sign In</a></li>
+          {:else}
+            <li><a href="/account">Account</a></li>
+          {/if}
           <li>
             <a class="cta-button" href="/add-property"
               >Sell or rent your Property</a
@@ -39,6 +44,15 @@
               /></a
             >
           </li>
+          {#if $page.data.user}
+            <li>
+              <form action="/logout" method="POST">
+                <button class="button logout" data-type="ghost" type="submit"
+                  >Logout</button
+                >
+              </form>
+            </li>
+          {/if}
         </ul>
       </nav>
     </section>
@@ -121,5 +135,13 @@
   }
   .cta-button:hover {
     background-color: var(--clr-neutral-900);
+  }
+  .logout {
+    text-decoration: none;
+    color: var(--clr-neutral-500);
+    font-weight: var(--fw-semi-bold);
+  }
+  .logout:hover {
+    color: var(--clr-danger);
   }
 </style>

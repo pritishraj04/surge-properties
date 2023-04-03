@@ -14,12 +14,12 @@
           <fieldset>
             <legend>I am an</legend>
             <div class="form-field">
-              <input type="radio" name="iAm" value="owner" id="owner" /><label
+              <input type="radio" name="iAm" value="Owner" id="owner" /><label
                 for="owner">Owner</label
               >
             </div>
             <div class="form-field">
-              <input type="radio" name="iAm" value="agent" id="agent" /><label
+              <input type="radio" name="iAm" value="Agent" id="agent" /><label
                 for="agent">Agent</label
               >
             </div>

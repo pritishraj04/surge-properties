@@ -61,6 +61,13 @@ model PossesionStatus {
   propertyLinked Property[]
 }
 
+model Image {
+  id             Int      @id @default(autoincrement())
+  url            String
+  propertyLinked Property @relation(fields: [propertyName], references: [name])
+  propertyName   String
+}
+
 // model Developer {
 //   id Int @id @default(autoincrement())
 
@@ -88,7 +95,8 @@ model Furnitures {
 model Property {
   id Int @id @default(autoincrement())
 
-  name            String
+  name            String  @unique
+  slug            String  @unique
   societyName     String?
   locality        String
   City            String
@@ -102,6 +110,8 @@ model Property {
   additionalRooms String
   ageInMonths     Int
   floor           String
+  userRole        String
+  images          Image[]
 
   status             PossesionStatus @relation(fields: [statusName], references: [name])
   statusName         String

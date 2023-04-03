@@ -1,5 +1,6 @@
 <script>
   import Logo from "$lib/components/Logo.svelte";
+  import { page } from "$app/stores";
 </script>
 
 <footer>
@@ -23,9 +24,17 @@
           <h3 class="fs-secondary-heading fw-semi-bold">Accounts</h3>
           <!-- svelte-ignore a11y-no-redundant-roles -->
           <ul role="list">
-            <li><a href="/signin">Sign In</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/add-property">Sell or rent your Property</a></li>
+            {#if !$page.data.user}
+              <li><a href="/signin">Sign In</a></li>
+              <li><a href="/signup">Sign Up</a></li>
+            {:else}
+              <li><a href="/account">Sign In</a></li>
+              <form action="/logout" method="POST">
+                <button class="button logout" data-type="ghost" type="submit"
+                  >Logout</button
+                >
+              </form>
+            {/if}
           </ul>
         </div>
 
@@ -106,5 +115,13 @@
     text-decoration: none;
     font-weight: 500;
     color: var(--clr-accent-200);
+  }
+  .logout {
+    text-decoration: none;
+    color: var(--clr-neutral-500);
+    font-weight: var(--fw-semi-bold);
+  }
+  .logout:hover {
+    color: var(--clr-danger);
   }
 </style>

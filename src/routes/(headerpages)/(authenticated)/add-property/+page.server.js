@@ -14,9 +14,23 @@ export const actions = {
     console.log(propertyDetails);
     //add data validationn here
 
+    const slug = propertyDetails.name
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "");
+
+    const updatedUser = await db.User.update({
+      where: { email: propertyDetails.user },
+      data: {
+        Role: { connect: { name: propertyDetails.iAm } },
+      },
+    });
+    console.log(updatedUser);
+
     await db.Property.create({
       data: {
         name: propertyDetails.name,
+        slug,
         societyName: propertyDetails.societyName,
         locality: propertyDetails.locality,
         City: propertyDetails.city,
@@ -30,6 +44,7 @@ export const actions = {
         additionalRooms: propertyDetails.additionalRooms,
         ageInMonths: parseInt(propertyDetails.ageInMonths),
         floor: propertyDetails.floors,
+        userRole: updatedUser.roleId.toString(),
 
         status: { connect: { name: propertyDetails.status } },
         propertyOfferedAs: { connect: { name: propertyDetails.propertyType } },
