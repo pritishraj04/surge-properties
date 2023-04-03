@@ -195,6 +195,14 @@
                 </div>
               {/each}
             </fieldset>
+            <fieldset>
+              <legend>Check box for Hot label</legend>
+              <div class="form-field">
+                <input type="checkbox" name="hot" id="hot" /><label for="hot"
+                  >Hot</label
+                >
+              </div>
+            </fieldset>
             <div class="form-field disabled form-field-hidden">
               <input
                 type="text"
@@ -221,11 +229,16 @@
     gap: 10px;
     flex-wrap: wrap;
   }
-  fieldset .form-field {
+  fieldset .form-field:has(input[type="radio"]) {
     display: inline;
-    background-color: var(--clr-neutral-400);
+    height: fit-content;
+    background-color: var(--clr-neutral-300);
     padding: 5px 15px;
     border-radius: 50px;
+  }
+  fieldset .form-field:has(input[type="checkbox"]) {
+    display: inline;
+    height: fit-content;
   }
   .property-details {
     display: grid;

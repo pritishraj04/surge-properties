@@ -1,11 +1,8 @@
 import { db } from "$lib/database";
+import { redirect } from "@sveltejs/kit";
 
 export const actions = {
-  addProperty: async ({ request, locals }) => {
-    // const validUsers = ["ADMIN", "Owner", "Agent"];
-    // if (!validUsers.includes(locals.user.role)) {
-    //   return invalid(400, { error: "Access Denied! Contact Administrator" });
-    // }
+  addProperty: async ({ request }) => {
     const data = await request.formData();
     const propertyDetails = {};
     data.forEach((value, key) => {
@@ -33,7 +30,7 @@ export const actions = {
         slug,
         societyName: propertyDetails.societyName,
         locality: propertyDetails.locality,
-        City: propertyDetails.city,
+        city: propertyDetails.city,
         desc: propertyDetails.desc,
         price: parseInt(propertyDetails.price),
         maintainance: parseInt(propertyDetails.maintainance),
@@ -45,6 +42,7 @@ export const actions = {
         ageInMonths: parseInt(propertyDetails.ageInMonths),
         floor: propertyDetails.floors,
         userRole: updatedUser.roleId.toString(),
+        hot: propertyDetails.hot === "on",
 
         status: { connect: { name: propertyDetails.status } },
         propertyOfferedAs: { connect: { name: propertyDetails.propertyType } },
@@ -54,5 +52,6 @@ export const actions = {
         user: { connect: { email: propertyDetails.user } },
       },
     });
+    throw redirect(302, "/");
   },
 };

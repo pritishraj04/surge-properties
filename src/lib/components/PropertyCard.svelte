@@ -5,12 +5,15 @@
     bhk = "2, 3",
     area = "818-1,371",
     rentOrSale = "Rent",
+    hot = false,
     slug;
 </script>
 
 <div class="property-card">
   <div class="image">
-    <span class="op">Hot</span>
+    {#if hot}
+      <span class="op">Hot</span>
+    {/if}
     <img src={"./assets/imgs/placeholder-image.jpg"} alt="placeholder" />
   </div>
   <div class="details">

@@ -112,6 +112,7 @@ model Property {
   floor           String
   userRole        String
   images          Image[]
+  hot             Boolean @default(false)
 
   status             PossesionStatus @relation(fields: [statusName], references: [name])
   statusName         String

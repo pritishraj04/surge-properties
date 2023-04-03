@@ -2,6 +2,7 @@
   import { Splide, SplideSlide, SplideTrack } from "@splidejs/svelte-splide";
   import "@splidejs/svelte-splide/css";
   import "iconify-icon";
+  import { page } from "$app/stores";
 
   import PropertyCard from "$lib/components/PropertyCard.svelte";
   import ChooseUs from "$lib/components/ChooseUs.svelte";
@@ -24,6 +25,13 @@
       },
     },
   };
+  const featuredList = $page.data.properties.filter((el) => el.hot === true);
+  const rentList = $page.data.properties.filter(
+    (el) => el.rentOrSaleName === "Rent"
+  );
+  const saleList = $page.data.properties.filter(
+    (el) => el.rentOrSaleName === "Sale"
+  );
 </script>
 
 <svelte:head>
@@ -94,24 +102,20 @@
           aria-labelledby="feature-carousel"
         >
           <SplideTrack>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
+            {#each featuredList as property}
+              <SplideSlide>
+                <PropertyCard
+                  name={property.name}
+                  address={`${property.locality}, ${property.city}`}
+                  price={property.price}
+                  area={property.areaSize}
+                  bhk={property.bedrooms}
+                  rentOrSale={property.rentOrSale}
+                  hot={property.hot}
+                  slug={property.slug}
+                />
+              </SplideSlide>
+            {/each}
           </SplideTrack>
           <div class="splide__arrows">
             <button class="splide__arrow splide__arrow--prev">
@@ -180,24 +184,20 @@
           aria-labelledby="feature-carousel"
         >
           <SplideTrack>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
+            {#each saleList as property}
+              <SplideSlide>
+                <PropertyCard
+                  name={property.name}
+                  address={`${property.locality}, ${property.city}`}
+                  price={property.price}
+                  area={property.areaSize}
+                  bhk={property.bedrooms}
+                  rentOrSale={property.rentOrSale}
+                  hot={property.hot}
+                  slug={property.slug}
+                />
+              </SplideSlide>
+            {/each}
           </SplideTrack>
           <div class="splide__arrows">
             <button class="splide__arrow splide__arrow--prev">
@@ -231,24 +231,20 @@
           aria-labelledby="feature-carousel"
         >
           <SplideTrack>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
-            <SplideSlide>
-              <PropertyCard />
-            </SplideSlide>
+            {#each rentList as property}
+              <SplideSlide>
+                <PropertyCard
+                  name={property.name}
+                  address={`${property.locality}, ${property.city}`}
+                  price={property.price}
+                  area={property.areaSize}
+                  bhk={property.bedrooms}
+                  rentOrSale={property.rentOrSale}
+                  hot={property.hot}
+                  slug={property.slug}
+                />
+              </SplideSlide>
+            {/each}
           </SplideTrack>
           <div class="splide__arrows">
             <button class="splide__arrow splide__arrow--prev">

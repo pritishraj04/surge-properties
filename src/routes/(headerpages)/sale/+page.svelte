@@ -20,10 +20,11 @@
           {#if property.rentOrSaleName === "Sale"}
             <PropertyCard
               name={property.name}
-              address={`${property.locality}, ${property.City}`}
+              address={`${property.locality}, ${property.city}`}
               price={property.price}
               area={property.areaSize}
               bhk={property.bedrooms}
+              hot={property.hot}
               slug={property.slug}
             />
           {/if}
