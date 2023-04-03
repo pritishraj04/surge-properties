@@ -1,22 +1,34 @@
+<script>
+  export let name = "The Royal Appartment",
+    address = "Bihita, Patna",
+    price = "12L",
+    bhk = "2, 3",
+    area = "818-1,371",
+    rentOrSale = "Rent",
+    slug;
+</script>
+
 <div class="property-card">
   <div class="image">
     <span class="op">Hot</span>
     <img src={"./assets/imgs/placeholder-image.jpg"} alt="placeholder" />
   </div>
   <div class="details">
-    <h3>The Royal Appartment</h3>
-    <p>Bihita, Patna</p>
-    <h5>₹44L to 50L</h5>
+    <h3>{name}</h3>
+    <p>{address}</p>
+    <h5>₹{price}</h5>
     <div class="specification">
-      <p>2,3 BHK Flats</p>
+      <p>{bhk} BHK Flats</p>
       |
-      <p>818-1,371 SQ.FT (Saleable)</p>
+      <p>{area} SQ.FT (Saleable)</p>
     </div>
     <div class="action">
       <button
         ><iconify-icon icon="material-symbols:list-alt-add" /> Shortlist</button
       >
-      <a href="/">Details</a>
+      <a href={`${rentOrSale === "Rent" ? "rental" : "sale"}/${slug}`}
+        >Details</a
+      >
     </div>
   </div>
 </div>

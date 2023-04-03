@@ -173,7 +173,58 @@
       <h1 class="section-title fs-primary-heading fw-bold">
         Properties for sale
       </h1>
-      <div class="sale-list">
+      <div class="sale-rent-list">
+        <Splide
+          hasTrack={false}
+          options={featureCarouselOption}
+          aria-labelledby="feature-carousel"
+        >
+          <SplideTrack>
+            <SplideSlide>
+              <PropertyCard />
+            </SplideSlide>
+            <SplideSlide>
+              <PropertyCard />
+            </SplideSlide>
+            <SplideSlide>
+              <PropertyCard />
+            </SplideSlide>
+            <SplideSlide>
+              <PropertyCard />
+            </SplideSlide>
+            <SplideSlide>
+              <PropertyCard />
+            </SplideSlide>
+            <SplideSlide>
+              <PropertyCard />
+            </SplideSlide>
+          </SplideTrack>
+          <div class="splide__arrows">
+            <button class="splide__arrow splide__arrow--prev">
+              <iconify-icon
+                style="font-size:16px;"
+                height="1.5em"
+                icon="bx:chevron-left"
+              /></button
+            >
+            <button class="splide__arrow splide__arrow--next">
+              <iconify-icon
+                style="font-size:16px;"
+                height="1.5em"
+                icon="bx:chevron-right"
+              /></button
+            >
+          </div>
+        </Splide>
+      </div>
+    </div>
+  </section>
+  <section class="margin-block-section">
+    <div class="container">
+      <h1 class="section-title fs-primary-heading fw-bold">
+        Properties for rent
+      </h1>
+      <div class="sale-rent-list">
         <Splide
           hasTrack={false}
           options={featureCarouselOption}
@@ -384,7 +435,7 @@
       grid-template-columns: 1fr;
     }
   }
-  .sale-list {
+  .sale-rent-list {
     margin-block: 20px;
   }
   .banner-wrapper {

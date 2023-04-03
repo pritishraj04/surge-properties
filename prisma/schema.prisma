@@ -99,7 +99,7 @@ model Property {
   slug            String  @unique
   societyName     String?
   locality        String
-  City            String
+  city            String
   desc            String
   price           BigInt
   maintainance    BigInt?

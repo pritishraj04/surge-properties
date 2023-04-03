@@ -7,6 +7,7 @@ export const load = async ({ locals }) => {
   const rentorSale = db.RentorSale.findMany();
   const furnitures = db.Furnitures.findMany();
   const amenities = db.Amenities.findMany();
+  const properties = db.Property.findMany();
   //   const developer = db.Developer.findMany();
   return {
     user: locals.user,
@@ -16,6 +17,7 @@ export const load = async ({ locals }) => {
     rentorSale,
     furnitures,
     amenities,
+    properties,
     // developer,
   };
 };

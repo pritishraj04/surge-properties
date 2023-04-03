@@ -1,6 +1,6 @@
 <script>
   import "iconify-icon";
-
+  import { page } from "$app/stores";
   import PropertyCard from "$lib/components/PropertyCard.svelte";
 </script>
 
@@ -16,22 +16,19 @@
       </h1>
       <p>Showing 160 properties for Rent in patna</p>
       <div class="rent-list">
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
+        {#each $page.data.properties as property}
+          {#if property.rentOrSaleName === "Rent"}
+            <PropertyCard
+              name={property.name}
+              address={`${property.locality}, ${property.City}`}
+              price={property.price}
+              area={property.areaSize}
+              bhk={property.bedrooms}
+              rentOrSale={property.rentOrSale}
+              slug={property.slug}
+            />
+          {/if}
+        {/each}
       </div>
     </div>
   </section>
