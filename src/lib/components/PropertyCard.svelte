@@ -1,4 +1,5 @@
 <script>
+  import { shortlist } from "$lib/stores";
   export let name = "The Royal Appartment",
     address = "Bihita, Patna",
     price = "12L",
@@ -6,7 +7,35 @@
     area = "818-1,371",
     rentOrSale = "Rent",
     hot = false,
+    id,
     slug;
+
+  const addShortlist = (
+    id,
+    name,
+    address,
+    price,
+    bhk,
+    rentOrSale,
+    hot,
+    slug
+  ) => {
+    if ($shortlist.filter((e) => e.id === id).length === 0) {
+      $shortlist = [
+        ...$shortlist,
+        {
+          id,
+          name,
+          address,
+          price: parseInt(price),
+          bhk,
+          rentOrSale: rentOrSale,
+          hot,
+          slug,
+        },
+      ];
+    }
+  };
 </script>
 
 <div class="property-card">
@@ -27,6 +56,16 @@
     </div>
     <div class="action">
       <button
+        on:click={addShortlist(
+          id,
+          name,
+          address,
+          price,
+          bhk,
+          rentOrSale,
+          hot,
+          slug
+        )}
         ><iconify-icon icon="material-symbols:list-alt-add" /> Shortlist</button
       >
       <a href={`${rentOrSale === "Rent" ? "rental" : "sale"}/${slug}`}

@@ -1,45 +1,64 @@
 <script>
+  import { shortlist } from "$lib/stores";
   export let name = "The Royal Appartment",
     address = "Bihita, Patna",
     price = "12L",
     bhk = "2, 3",
     rentOrSale = "Rent",
     hot = false,
+    id,
     slug;
+
+  const removeShortlist = (id) => {
+    if ($shortlist.filter((e) => e.id === id).length > 0) {
+      $shortlist = $shortlist.filter((e) => e.id !== id);
+    }
+  };
 </script>
 
-<a
-  href={`${rentOrSale === "Rent" ? "rental" : "sale"}/${slug}`}
-  class="shortlist-card"
->
-  <button class="button delete-button" data-type="ghost"
-    ><iconify-icon icon="fluent-mdl2:cancel" /></button
+<div class="shortlist-card">
+  <button
+    class="button delete-button"
+    on:click={removeShortlist(id)}
+    data-type="ghost"><iconify-icon icon="fluent-mdl2:cancel" /></button
   >
-  <div class="image">
-    {#if hot}
-      <span class="op">Hot</span>
-    {/if}
-    <img src={"./assets/imgs/placeholder-image.jpg"} alt="placeholder" />
-  </div>
-  <div class="details">
-    <h3>{name}</h3>
-    <h4>{bhk} BHK Flats</h4>
-    <p>{address}</p>
-    <h5>₹{price}</h5>
-    <p />
-  </div>
-</a>
+  <a
+    href={`${rentOrSale === "Rent" ? "rental" : "sale"}/${slug}`}
+    class="card-wrapper"
+  >
+    <div class="image">
+      {#if hot}
+        <span class="op">Hot</span>
+      {/if}
+      <img src={"./assets/imgs/placeholder-image.jpg"} alt="placeholder" />
+    </div>
+    <div class="details">
+      <h3>{name}</h3>
+      <h4>{bhk} BHK Flats</h4>
+      <p>{address}</p>
+      <h5>₹{price}</h5>
+      <p />
+    </div>
+  </a>
+</div>
 
 <style>
   .shortlist-card {
     position: relative;
-    display: flex;
-    text-decoration: none;
-    min-width: 420px;
     background-color: var(--clr-neutral-100);
     border-radius: 10px;
     border: 1px solid var(--clr-neutral-300);
     margin-bottom: 5px;
+  }
+  .card-wrapper {
+    display: flex;
+    text-decoration: none;
+    min-width: 420px;
+  }
+  @media (max-width: 680px) {
+    .card-wrapper {
+      min-width: unset;
+    }
   }
   .delete-button {
     position: absolute;

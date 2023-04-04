@@ -105,6 +105,7 @@
             {#each featuredList as property}
               <SplideSlide>
                 <PropertyCard
+                  id={property.id}
                   name={property.name}
                   address={`${property.locality}, ${property.city}`}
                   price={property.price}
@@ -187,6 +188,7 @@
             {#each saleList as property}
               <SplideSlide>
                 <PropertyCard
+                  id={property.id}
                   name={property.name}
                   address={`${property.locality}, ${property.city}`}
                   price={property.price}
@@ -234,6 +236,7 @@
             {#each rentList as property}
               <SplideSlide>
                 <PropertyCard
+                  id={property.id}
                   name={property.name}
                   address={`${property.locality}, ${property.city}`}
                   price={property.price}

@@ -4,6 +4,7 @@
   import "iconify-icon";
   import { clickOutside } from "$lib/clickOutside.js";
   import ShortlistCard from "$lib/components/ShortlistCard.svelte";
+  import { shortlist } from "$lib/stores";
   let userDropdown = false;
   let shortlistDropdown = false;
   let isMenuOpen = false;
@@ -77,10 +78,22 @@
                   >
                 </div>
                 <div class="shortlist-body">
-                  <ShortlistCard />
-                  <ShortlistCard />
-                  <ShortlistCard />
-                  <ShortlistCard />
+                  {#each $shortlist as property}
+                    <ShortlistCard
+                      id={property.id}
+                      name={property.name}
+                      address={property.address}
+                      price={property.price}
+                      bhk={property.bhk}
+                      rentOrSale={property.rentOrSale}
+                      hot={property.hot}
+                      slug
+                    />
+                  {:else}
+                    <p class="empty-shortlist">
+                      Add items to shortlist to view here.
+                    </p>
+                  {/each}
                 </div>
               </div>
             </div>
@@ -263,11 +276,8 @@
     }
     nav {
       width: 100%;
-      position: absolute;
-      top: 90px;
       padding-block: 30px;
-      background-color: var(--clr-neutral-100);
-      transition: cubic-bezier(0, 0.95, 0.55, 0.68) 0.8s;
+      transition: cubic-bezier(0, 0.95, 0.55, 0.68) 300ms;
     }
     nav ul {
       flex-direction: column;
@@ -286,10 +296,19 @@
     .nav-hidden {
       height: 0;
       overflow: hidden;
+      position: absolute;
+      top: 90px;
       padding: 0;
     }
     .dropdown {
       position: unset;
     }
+  }
+  .empty-shortlist {
+    font-size: 14px;
+    padding-block: 12px;
+    font-weight: 600;
+    color: var(--clr-neutral-500);
+    min-width: 420px;
   }
 </style>

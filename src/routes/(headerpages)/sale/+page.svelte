@@ -19,6 +19,7 @@
         {#each $page.data.properties as property}
           {#if property.rentOrSaleName === "Sale"}
             <PropertyCard
+              id={property.id}
               name={property.name}
               address={`${property.locality}, ${property.city}`}
               price={property.price}
