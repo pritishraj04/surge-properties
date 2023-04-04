@@ -1,5 +1,6 @@
 <script>
   import { page } from "$app/stores";
+  import { enhance } from "$app/forms";
   // let newDeveloper;
 </script>
 
@@ -10,7 +11,12 @@
         List your Property now!
       </h1>
       <div class="listing-section">
-        <form action="?/addProperty" method="POST" autocomplete="off">
+        <form
+          action="?/addProperty"
+          method="POST"
+          autocomplete="off"
+          use:enhance
+        >
           <fieldset>
             <legend>I am an</legend>
             <div class="form-field">
@@ -244,6 +250,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
+  }
+  @media (max-width: 680px) {
+    .property-details {
+      grid-template-columns: 1fr;
+    }
   }
   .button-form-field {
     display: block;

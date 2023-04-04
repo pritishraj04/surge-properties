@@ -1,8 +1,22 @@
 <script>
   import Logo from "$lib/components/Logo.svelte";
   import { page } from "$app/stores";
-
+  import "iconify-icon";
+  import { clickOutside } from "$lib/clickOutside.js";
+  import ShortlistCard from "$lib/components/ShortlistCard.svelte";
+  let userDropdown = false;
+  let shortlistDropdown = false;
   let isMenuOpen = false;
+  const handleCloseUser = () => {
+    if (userDropdown) {
+      userDropdown = false;
+    }
+  };
+  const handleCloseShortlist = () => {
+    if (shortlistDropdown) {
+      shortlistDropdown = false;
+    }
+  };
 </script>
 
 <header class="bg-blur">
@@ -21,36 +35,111 @@
           /></button
         >
       </div>
-      <nav class={isMenuOpen ? "nav-shown" : ""}>
+      <nav class={isMenuOpen ? "" : "nav-hidden"}>
         <!-- svelte-ignore a11y-no-redundant-roles -->
         <ul class="nav-list" role="list">
           <li><a href="/sale">Buy</a></li>
           <li><a href="/rental">Rent</a></li>
           {#if !$page.data.user}
             <li><a href="/signin">Sign In</a></li>
-          {:else}
-            <li><a href="/account">Account</a></li>
           {/if}
           <li>
             <a class="cta-button" href="/add-property"
               >Sell or rent your Property</a
             >
           </li>
-          <li>
-            <a href="/"
+          <li
+            class="has-dropdown"
+            use:clickOutside
+            on:click_outside={handleCloseShortlist}
+          >
+            <button
+              class="button icon-button"
+              data-type="ghost"
+              on:click={() => (shortlistDropdown = !shortlistDropdown)}
               ><iconify-icon
                 icon="material-symbols:list-alt-outline"
                 style="font-size: 30px;"
-              /></a
+              /></button
             >
+            <div
+              class={shortlistDropdown
+                ? "dropdown shortlist-dropdown"
+                : "dropdown shortlist-dropdown dropdown-hidden"}
+            >
+              <div class="shortlist">
+                <div class="shortlist-header">
+                  <h2>Shortlisted Properties</h2>
+                  <button
+                    class="button"
+                    data-type="ghost"
+                    on:click={handleCloseShortlist}>x</button
+                  >
+                </div>
+                <div class="shortlist-body">
+                  <ShortlistCard />
+                  <ShortlistCard />
+                  <ShortlistCard />
+                  <ShortlistCard />
+                </div>
+              </div>
+            </div>
           </li>
           {#if $page.data.user}
-            <li>
-              <form action="/logout" method="POST">
-                <button class="button logout" data-type="ghost" type="submit"
-                  >Logout</button
-                >
-              </form>
+            <li
+              class="has-dropdown"
+              use:clickOutside
+              on:click_outside={handleCloseUser}
+            >
+              <button
+                class="button icon-button"
+                data-type="ghost"
+                on:click={() => (userDropdown = !userDropdown)}
+              >
+                <iconify-icon
+                  icon="fluent:inprivate-account-28-filled"
+                  style="font-size: 30px;"
+                />
+              </button>
+              <!-- svelte-ignore a11y-no-redundant-roles -->
+              <ul
+                class={userDropdown ? "dropdown" : "dropdown dropdown-hidden"}
+                role="list"
+              >
+                <li>
+                  <a
+                    class="dropdown-menu"
+                    on:click={handleCloseUser}
+                    href="/account"
+                  >
+                    <div class="dropdown-menu-icon">
+                      <iconify-icon
+                        icon="fluent:tab-inprivate-account-20-filled"
+                        style="font-size: 30px;"
+                      />
+                    </div>
+                    Account</a
+                  >
+                </li>
+                <li>
+                  <form action="/logout" method="POST">
+                    <button
+                      class="button logout dropdown-menu"
+                      on:click={handleCloseUser}
+                      data-type="ghost"
+                      type="submit"
+                    >
+                      <div class="dropdown-menu-icon">
+                        <iconify-icon
+                          icon="ph:sign-out-bold"
+                          style="font-size: 30px;"
+                        />
+                      </div>
+                      Logout</button
+                    >
+                  </form>
+                </li>
+              </ul>
             </li>
           {/if}
         </ul>
@@ -65,7 +154,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
     z-index: 9999;
   }
   .header-section {
@@ -91,40 +180,6 @@
   .hamburger-button {
     display: none;
   }
-  @media (max-width: 646px) {
-    .header-section {
-      flex-direction: column;
-      align-items: start;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav {
-      width: 100%;
-      position: absolute;
-      top: 90px;
-      left: 700px;
-      padding-block: 30px;
-      background-color: var(--clr-neutral-100);
-      transition: left 230ms;
-    }
-    nav ul {
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-    .logo {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-    }
-    .hamburger-button {
-      display: block;
-    }
-    .nav-shown {
-      left: 0;
-    }
-  }
   .cta-button {
     background-color: var(--clr-accent-400);
     padding: 10px 12px;
@@ -143,5 +198,98 @@
   }
   .logout:hover {
     color: var(--clr-danger);
+  }
+  .has-dropdown {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(244, 244, 244);
+    padding: 10px 16px;
+    text-align: center;
+    right: 0;
+    top: 63px;
+    transition: cubic-bezier(0, 0.95, 0.55, 0.68) 0.8s;
+  }
+  .shortlist-dropdown {
+    padding: 0;
+  }
+  .shortlist-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: var(--clr-neutral-300);
+  }
+  .shortlist-header h2 {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .shortlist-header button {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .shortlist-body {
+    padding: 8px;
+    max-height: 340px;
+    overflow-y: auto;
+  }
+  .icon-button {
+    font-weight: 600;
+    color: var(--clr-accent-200);
+    cursor: pointer;
+  }
+  .dropdown-hidden {
+    /* display: none; */
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+  .dropdown-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  @media (max-width: 680px) {
+    .header-section {
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav {
+      width: 100%;
+      position: absolute;
+      top: 90px;
+      padding-block: 30px;
+      background-color: var(--clr-neutral-100);
+      transition: cubic-bezier(0, 0.95, 0.55, 0.68) 0.8s;
+    }
+    nav ul {
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .logo {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+    .hamburger-button {
+      display: block;
+    }
+    .nav-hidden {
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+    .dropdown {
+      position: unset;
+    }
   }
 </style>

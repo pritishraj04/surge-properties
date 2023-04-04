@@ -186,8 +186,8 @@ svg {
   );
 }
 .bg-blur {
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: saturate(180%) blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 }
 .drop-shadow-primary {
   box-shadow: 0 3px 3px 0 hsla(0, 0%, 89%, 0.4);
