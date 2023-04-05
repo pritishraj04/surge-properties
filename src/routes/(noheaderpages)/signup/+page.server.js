@@ -15,8 +15,6 @@ export const actions = {
     const phone = data.get("phone");
     const password = data.get("password");
     const confPassword = data.get("confPassword");
-
-    console.log({ email, phone, password, confPassword });
     //need better validation
     if (!email || typeof email !== "string") {
       return fail(400, { error: "Please provide valid email." });

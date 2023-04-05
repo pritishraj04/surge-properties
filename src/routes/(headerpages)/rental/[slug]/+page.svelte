@@ -3,7 +3,6 @@
   const property = $page.data.properties.filter(
     (el) => el.slug === $page.params.slug
   )[0];
-  console.log(property);
 </script>
 
 <svelte:head>

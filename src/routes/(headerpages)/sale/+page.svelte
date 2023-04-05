@@ -24,6 +24,7 @@
               address={`${property.locality}, ${property.city}`}
               price={property.price}
               area={property.areaSize}
+              rentOrSale={property.rentOrSaleName}
               bhk={property.bedrooms}
               hot={property.hot}
               slug={property.slug}

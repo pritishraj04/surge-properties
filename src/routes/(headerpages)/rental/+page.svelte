@@ -25,7 +25,7 @@
               price={property.price}
               area={property.areaSize}
               bhk={property.bedrooms}
-              rentOrSale={property.rentOrSale}
+              rentOrSale={property.rentOrSaleName}
               hot={property.hot}
               slug={property.slug}
             />

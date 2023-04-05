@@ -8,7 +8,6 @@ export const actions = {
     data.forEach((value, key) => {
       propertyDetails[key] = value;
     });
-    console.log(propertyDetails);
     //add data validationn here
 
     const slug = propertyDetails.name
@@ -22,7 +21,6 @@ export const actions = {
         Role: { connect: { name: propertyDetails.iAm } },
       },
     });
-    console.log(updatedUser);
 
     await db.Property.create({
       data: {

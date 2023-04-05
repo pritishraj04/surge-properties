@@ -87,7 +87,7 @@
                       bhk={property.bhk}
                       rentOrSale={property.rentOrSale}
                       hot={property.hot}
-                      slug
+                      slug={property.slug}
                     />
                   {:else}
                     <p class="empty-shortlist">
