@@ -1,9 +1,9 @@
 <script>
   import { shortlist } from "$lib/stores";
-  export let name = "The Royal Appartment",
-    address = "Bihita, Patna",
-    price = "12L",
-    bhk = "2, 3",
+  export let name = "",
+    address = "",
+    price = "",
+    bhk = "",
     rentOrSale = "Rent",
     hot = false,
     id,
@@ -22,8 +22,9 @@
     on:click={removeShortlist(id)}
     data-type="ghost"><iconify-icon icon="fluent-mdl2:cancel" /></button
   >
+  <!-- fix: not going to sale -->
   <a
-    href={`${rentOrSale === "Rent" ? "rental" : "sale"}/${slug}`}
+    href={`${rentOrSale === "Rent" ? "/rental" : "/sale"}/${slug}`}
     class="card-wrapper"
   >
     <div class="image">

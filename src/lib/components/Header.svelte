@@ -8,6 +8,11 @@
   let userDropdown = false;
   let shortlistDropdown = false;
   let isMenuOpen = false;
+  const handleCloseMenu = () => {
+    if (isMenuOpen) {
+      isMenuOpen = false;
+    }
+  };
   const handleCloseUser = () => {
     if (userDropdown) {
       userDropdown = false;
@@ -39,14 +44,16 @@
       <nav class={isMenuOpen ? "" : "nav-hidden"}>
         <!-- svelte-ignore a11y-no-redundant-roles -->
         <ul class="nav-list" role="list">
-          <li><a href="/sale">Buy</a></li>
-          <li><a href="/rental">Rent</a></li>
+          <li><a href="/sale" on:click={handleCloseMenu}>Buy</a></li>
+          <li><a href="/rental" on:click={handleCloseMenu}>Rent</a></li>
           {#if !$page.data.user}
-            <li><a href="/signin">Sign In</a></li>
+            <li><a href="/signin" on:click={handleCloseMenu}>Sign In</a></li>
           {/if}
           <li>
-            <a class="cta-button" href="/add-property"
-              >Sell or rent your Property</a
+            <a
+              class="cta-button"
+              href="/add-property"
+              on:click={handleCloseMenu}>Sell or rent your Property</a
             >
           </li>
           <li
@@ -59,7 +66,7 @@
               data-type="ghost"
               on:click={() => (shortlistDropdown = !shortlistDropdown)}
               ><iconify-icon
-                icon="material-symbols:list-alt-outline"
+                icon="fluent:window-bullet-list-20-filled"
                 style="font-size: 30px;"
               /></button
             >
@@ -91,7 +98,10 @@
                     />
                   {:else}
                     <p class="empty-shortlist">
-                      Add items to shortlist to view here.
+                      Add items to <iconify-icon
+                        icon="fluent:window-bullet-list-20-filled"
+                        style="font-size: 16px;"
+                      /> Shortlist to view here.
                     </p>
                   {/each}
                 </div>
@@ -122,7 +132,10 @@
                 <li>
                   <a
                     class="dropdown-menu"
-                    on:click={handleCloseUser}
+                    on:click={() => {
+                      handleCloseUser();
+                      handleCloseMenu();
+                    }}
                     href="/account"
                   >
                     <div class="dropdown-menu-icon">

@@ -29,7 +29,7 @@
           address,
           price: parseInt(price),
           bhk,
-          rentOrSale: rentOrSale,
+          rentOrSale,
           hot,
           slug,
         },
@@ -66,9 +66,12 @@
           hot,
           slug
         )}
-        ><iconify-icon icon="material-symbols:list-alt-add" /> Shortlist</button
+        ><iconify-icon
+          icon="fluent:window-bullet-list-add-20-filled"
+          style="font-size: 14px;"
+        /> Shortlist</button
       >
-      <a href={`${rentOrSale === "Rent" ? "rental" : "sale"}/${slug}`}
+      <a href={`${rentOrSale === "Rent" ? "/rental" : "/sale"}/${slug}`}
         >Details</a
       >
     </div>

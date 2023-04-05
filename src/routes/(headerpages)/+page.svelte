@@ -83,7 +83,12 @@
                   <option value="commercial">Commercial</option>
                 </select>
               </div>
-              <button>Search</button>
+              <button
+                ><iconify-icon
+                  icon="iconoir:search"
+                  style="font-size: 24px;"
+                /></button
+              >
             </div>
           </form>
         </div>
