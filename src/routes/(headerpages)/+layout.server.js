@@ -23,7 +23,6 @@ export const load = async ({ locals }) => {
     return await db.Property.findMany();
   };
   //   const developer = async()=> { db.Developer.findMany();}
-  console.log("status:", status());
   return {
     user: locals.user,
     status: status(),

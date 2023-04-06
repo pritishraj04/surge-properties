@@ -315,7 +315,12 @@
       padding: 0;
     }
     .dropdown {
-      position: unset;
+      bottom: -19rem;
+      left: 0;
+      top: -12rem;
+    }
+    .shortlist-body {
+      max-height: 495px;
     }
   }
   .empty-shortlist {
@@ -324,5 +329,9 @@
     font-weight: 600;
     color: var(--clr-neutral-500);
     min-width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
   }
 </style>

@@ -115,7 +115,7 @@
 
 <style>
   .img-background {
-    background-image: url("$lib/assets/imgs/pablo-zuchero-xZWX0KrrGlU-unsplash.webp");
+    background-image: url("$lib/assets/imgs/auth-page-bg.webp");
     background-position: center;
     background-repeat: no-repeat;
     padding: 40px 0;

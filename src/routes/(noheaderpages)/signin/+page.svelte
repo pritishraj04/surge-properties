@@ -90,8 +90,9 @@
 
 <style>
   .img-background {
-    background-image: url("$lib/assets/imgs/pablo-zuchero-xZWX0KrrGlU-unsplash.webp");
+    background-image: url("$lib/assets/imgs/auth-page-bg.webp");
     background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
     padding: 40px 0;
     min-height: 100vh;
