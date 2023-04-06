@@ -8,6 +8,7 @@
   let userDropdown = false;
   let shortlistDropdown = false;
   let isMenuOpen = false;
+  let windowHeight;
   const handleCloseMenu = () => {
     if (isMenuOpen) {
       isMenuOpen = false;
@@ -24,6 +25,8 @@
     }
   };
 </script>
+
+<svelte:window bind:innerHeight={windowHeight} />
 
 <header class="bg-blur">
   <div class="container">
@@ -57,7 +60,7 @@
             >
           </li>
           <li
-            class="has-dropdown"
+            class="has-dropdown has-shortlist-dropdown"
             use:clickOutside
             on:click_outside={handleCloseShortlist}
           >
@@ -84,7 +87,10 @@
                     on:click={handleCloseShortlist}>x</button
                   >
                 </div>
-                <div class="shortlist-body">
+                <div
+                  class="shortlist-body"
+                  style={`max-height: ${windowHeight - 130}px;`}
+                >
                   {#each $shortlist as property}
                     <ShortlistCard
                       id={property.id}
@@ -98,10 +104,7 @@
                     />
                   {:else}
                     <p class="empty-shortlist">
-                      Add items to <iconify-icon
-                        icon="fluent:window-bullet-list-20-filled"
-                        style="font-size: 16px;"
-                      /> Shortlist to view here.
+                      Add items to Shortlist to view here.
                     </p>
                   {/each}
                 </div>
@@ -262,7 +265,6 @@
   }
   .shortlist-body {
     padding: 8px;
-    max-height: 340px;
     overflow-y: auto;
   }
   .icon-button {
@@ -280,6 +282,17 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+  .empty-shortlist {
+    font-size: 14px;
+    padding-block: 12px;
+    font-weight: 600;
+    color: var(--clr-neutral-500);
+    min-width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
   }
   @media (max-width: 680px) {
     .header-section {
@@ -315,23 +328,19 @@
       padding: 0;
     }
     .dropdown {
-      bottom: -19rem;
+      position: unset;
+    }
+    .has-shortlist-dropdown {
+      position: static;
+    }
+    .shortlist-dropdown {
+      position: absolute;
+      z-index: 999;
       left: 0;
-      top: -12rem;
+      top: 5.7rem;
     }
-    .shortlist-body {
-      max-height: 495px;
+    .empty-shortlist {
+      min-width: auto;
     }
-  }
-  .empty-shortlist {
-    font-size: 14px;
-    padding-block: 12px;
-    font-weight: 600;
-    color: var(--clr-neutral-500);
-    min-width: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
   }
 </style>

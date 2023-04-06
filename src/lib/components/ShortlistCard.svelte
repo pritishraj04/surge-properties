@@ -20,7 +20,8 @@
   <button
     class="button delete-button"
     on:click={removeShortlist(id)}
-    data-type="ghost"><iconify-icon icon="fluent-mdl2:cancel" /></button
+    data-type="ghost"
+    ><iconify-icon icon="material-symbols:delete-outline" /></button
   >
   <!-- fix: not going to sale -->
   <a
@@ -63,7 +64,7 @@
   }
   .delete-button {
     position: absolute;
-    font-size: 0.8rem;
+    font-size: 1rem;
     top: 2px;
     right: 2px;
   }

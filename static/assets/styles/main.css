@@ -390,7 +390,7 @@ body {
   color: var(--clr-accent-200);
 }
 .button[data-type="ghost"] {
-  border-radius: none;
+  border-radius: 0;
   padding: 0;
   font-weight: var(--fw-regular);
   font-size: inherit;
