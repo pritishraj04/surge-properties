@@ -196,6 +196,7 @@
   }
   nav a {
     text-decoration: none;
+    white-space: nowrap;
     font-weight: 600;
     color: var(--clr-accent-200);
   }
