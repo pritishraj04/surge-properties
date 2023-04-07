@@ -7,6 +7,10 @@
   );
 </script>
 
+<svelte:head>
+  <title>Account | Surge Properties</title>
+</svelte:head>
+
 <main>
   <section class="margin-be-section">
     <div class="container bg-primary padding-block-400">

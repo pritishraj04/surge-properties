@@ -1,5 +1,6 @@
 <script>
   import { shortlist } from "$lib/stores";
+  import PlaceHolderImage from "$lib/assets/imgs/placeholder-image.jpg";
   export let name = "",
     address = "",
     price = "",
@@ -32,7 +33,7 @@
       {#if hot}
         <span class="op">Hot</span>
       {/if}
-      <img src={"./assets/imgs/placeholder-image.jpg"} alt="placeholder" />
+      <img src={PlaceHolderImage} alt="placeholder" />
     </div>
     <div class="details">
       <h3>{name}</h3>

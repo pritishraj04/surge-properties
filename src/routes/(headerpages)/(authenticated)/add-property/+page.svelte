@@ -4,6 +4,10 @@
   // let newDeveloper;
 </script>
 
+<svelte:head>
+  <title>Add Property | Surge Properties</title>
+</svelte:head>
+
 <main>
   <section class="margin-be-section">
     <div class="container">
@@ -77,12 +81,7 @@
             </div>
             <div class="form-field">
               <label for="additionalRooms">Additional Rooms</label>
-              <input
-                type="text"
-                name="additionalRooms"
-                id="additionalRooms"
-                required
-              />
+              <input type="text" name="additionalRooms" id="additionalRooms" />
             </div>
             <div class="form-field">
               <label for="ageInMonths">Age In Months</label>

@@ -7,3 +7,5 @@ export const shortlist = writable(
 shortlist.subscribe(
   (val) => browser && localStorage.setItem("shortlist", JSON.stringify(val))
 );
+
+export let loading = writable(false);

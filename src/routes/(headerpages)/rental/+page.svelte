@@ -2,6 +2,9 @@
   import "iconify-icon";
   import { page } from "$app/stores";
   import PropertyCard from "$lib/components/PropertyCard.svelte";
+  const rentProperties = $page.data.properties.filter(
+    (el) => el.rentOrSaleName === "Rent"
+  );
 </script>
 
 <svelte:head>
@@ -14,7 +17,10 @@
       <h1 class="section-title fs-primary-heading fw-bold">
         Property for Rent in Patna
       </h1>
-      <p>Showing 160 properties for Rent in patna</p>
+      <p>
+        Showing {rentProperties.length}
+        {rentProperties.length > 1 ? "properties" : "property"} for Rent in patna
+      </p>
       <div class="rent-list">
         {#each $page.data.properties as property}
           {#if property.rentOrSaleName === "Rent"}

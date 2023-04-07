@@ -3,6 +3,10 @@
   import Logo from "$lib/components/Logo.svelte";
 </script>
 
+<svelte:head>
+  <title>Sign In | Surge Properties</title>
+</svelte:head>
+
 <main>
   <section class="img-background">
     <div class="container">
@@ -44,7 +48,7 @@
             </ul>
           </div>
           <form
-            class="form bg-primary"
+            class="form bg-blur"
             action="?/signin"
             method="POST"
             autocomplete="off"
@@ -123,6 +127,7 @@
     padding: 30px 40px;
     min-width: 380px;
     border-radius: var(--br-primary);
+    background-color: rgba(255, 255, 255, 0.56);
   }
   .form-heading {
     margin-bottom: 20px;

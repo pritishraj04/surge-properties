@@ -22,6 +22,14 @@ export const load = async ({ locals }) => {
   const properties = async () => {
     return await db.Property.findMany();
   };
+  const images = async () => {
+    return await db.Image.findMany();
+  };
+  const users = async () => {
+    return await db.User.findMany({
+      select: { id: true, phone: true, email: true, roleId: true },
+    });
+  };
   //   const developer = async()=> { db.Developer.findMany();}
   return {
     user: locals.user,
@@ -32,6 +40,8 @@ export const load = async ({ locals }) => {
     furnitures: furnitures(),
     amenities: amenities(),
     properties: properties(),
+    images: images(),
+    users: users(),
     //developer: developer(),
   };
 };

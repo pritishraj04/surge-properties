@@ -4,6 +4,10 @@
   import { enhance } from "$app/forms";
 </script>
 
+<svelte:head>
+  <title>Sign Up | Surge Properties</title>
+</svelte:head>
+
 <main>
   <section class="img-background">
     <div class="container">
@@ -45,7 +49,7 @@
             </ul>
           </div>
           <form
-            class="form bg-primary"
+            class="form bg-blur"
             action="?/signup"
             method="POST"
             autocomplete="off"
@@ -146,6 +150,7 @@
     padding: 30px 40px;
     min-width: 380px;
     border-radius: var(--br-primary);
+    background-color: rgba(255, 255, 255, 0.56);
   }
   .form-heading {
     margin-bottom: 20px;

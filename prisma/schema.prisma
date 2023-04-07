@@ -107,7 +107,7 @@ model Property {
   areaSize        String
   bedrooms        Int     @default(0)
   bathrooms       Int     @default(0)
-  additionalRooms String
+  additionalRooms String?
   ageInMonths     Int
   floor           String
   userRole        String

@@ -21,25 +21,36 @@ export const actions = {
         Role: { connect: { name: propertyDetails.iAm } },
       },
     });
+    const userRole = await db.Roles.findFirst({
+      where: { id: updatedUser.roleId },
+    });
 
     await db.Property.create({
       data: {
         name: propertyDetails.name,
         slug,
-        societyName: propertyDetails.societyName,
+        societyName: propertyDetails.societyName
+          ? propertyDetails.societyName
+          : undefined,
         locality: propertyDetails.locality,
         city: propertyDetails.city,
         desc: propertyDetails.desc,
         price: parseInt(propertyDetails.price),
-        maintainance: parseInt(propertyDetails.maintainance),
-        brokerage: parseInt(propertyDetails.brokerage),
+        maintainance: propertyDetails.maintainance
+          ? parseInt(propertyDetails.maintainance)
+          : undefined,
+        brokerage: propertyDetails.brokerage
+          ? parseInt(propertyDetails.brokerage)
+          : undefined,
         areaSize: propertyDetails.areaSize,
         bedrooms: parseInt(propertyDetails.bedrooms),
         bathrooms: parseInt(propertyDetails.bathrooms),
-        additionalRooms: propertyDetails.additionalRooms,
+        additionalRooms: propertyDetails.additionalRooms
+          ? propertyDetails.additionalRooms
+          : undefined,
         ageInMonths: parseInt(propertyDetails.ageInMonths),
         floor: propertyDetails.floors,
-        userRole: updatedUser.roleId.toString(),
+        userRole: userRole.name,
         hot: propertyDetails.hot === "on",
 
         status: { connect: { name: propertyDetails.status } },
